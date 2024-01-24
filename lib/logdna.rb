@@ -13,6 +13,7 @@ module Logdna
   class MaxLengthExceeded < ArgumentError; end
 
   class Ruby < ::Logger
+    include ActiveSupport::LoggerSilence
     # uncomment line below and line 3 to enforce singleton
     # include Singleton
     Logger::TRACE = 5
@@ -103,7 +104,7 @@ module Logdna
     end
 
     def add(*_arg)
-      @internal_logger.debug("add not supported in LogDNA logger")
+      #@internal_logger.debug("add not supported in LogDNA logger")
       false
     end
 
